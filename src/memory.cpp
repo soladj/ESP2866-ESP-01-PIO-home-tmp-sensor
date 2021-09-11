@@ -43,15 +43,6 @@ uint16_t read_eeprom_temperature_sel(void) {
   return value;
 }
 
-uint16_t read_eeprom_calefactor_power(void) {
-  uint16_t value = read_memory(EEPROM_CALEFACTOR_POWER_DIR);
-  if(value==0xFFFF)
-  {
-    value = CALEFACTOR_POWER_DEFAULT;
-  }
-  return value;
-}
-
 uint16_t update_eeprom_temperature_sel(uint16_t value) {
   uint16_t val =  value;
   if (val>TEMPERATURE_SEL_MAX) 
@@ -63,19 +54,5 @@ uint16_t update_eeprom_temperature_sel(uint16_t value) {
     val = TEMPERATURE_SEL_MIN;
   }
   update_memory(EEPROM_TEMPERATURE_SEL_DIR, val);
-  return val;
-}
-
-uint16_t update_eeprom_calefactor_power(uint16_t value) {
-  uint16_t val =  value;
-  if (val>CALEFACTOR_POWER_MAX) 
-  {
-    val = CALEFACTOR_POWER_MAX;
-  } 
-  else if (val<CALEFACTOR_POWER_MIN) 
-  {
-    val = CALEFACTOR_POWER_MIN;
-  }
-  update_memory(EEPROM_CALEFACTOR_POWER_DIR, val);
   return val;
 }

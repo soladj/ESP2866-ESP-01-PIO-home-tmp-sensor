@@ -110,9 +110,6 @@ void callback(char* topic, unsigned char* payload, unsigned int length) {
           case MQTT_CALEFACTOR_TSEL_TOPIC_ENUM:
             *mqtt_sub_var[i] = update_eeprom_temperature_sel(*mqtt_sub_var[i]);
             break;
-          case MQTT_CALEFACTOR_POWER_TOPIC_ENUM:
-            *mqtt_sub_var[i] = update_eeprom_calefactor_power(*mqtt_sub_var[i]);
-            break;
         }
       }
     }
@@ -164,7 +161,6 @@ void setup_comm()
 
   eeprom_init(MQTT_SUB_TOPIC_STORED);
   tsel = read_eeprom_temperature_sel();
-  cpower = read_eeprom_calefactor_power();
 
   loop_tmpsensor(&tmp, &tsel, &cstatus, DEVICE_ZONE);
   pub_topics_refresh();
