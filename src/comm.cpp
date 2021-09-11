@@ -4,7 +4,7 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-#include "data.h"
+#include "conf.h"
 #include "tmpsensor.h"
 #include "memory.h"
 
